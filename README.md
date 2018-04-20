@@ -1,0 +1,1 @@
+This code relies on a secret Makefile in the downloads/ folder which downloads the google spreadsheets containing subscriber information.
