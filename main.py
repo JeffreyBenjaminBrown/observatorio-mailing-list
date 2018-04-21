@@ -2,10 +2,10 @@ import pandas as pd
 import os
 
 # Download
-subscribed = pd.read_csv( "downloads/subscribed.csv" ) # collected online, ongoing
-canceled = pd.read_csv( "downloads/canceled.csv" ) # collected online, ongoing
+subscribed = pd.read_csv( "private/subscribed.csv" ) # collected online, ongoing
+canceled = pd.read_csv( "private/canceled.csv" ) # collected online, ongoing
 first_subscribed = pd.read_csv(
-  "downloads/first.csv" # collected once, at the observatorio launch
+  "private/first.csv" # collected once, at the observatorio launch
   , usecols = [ 'Marca temporal', 'Nombres', 'Apellidos'
                 , 'Correo electrónico' ] )
 

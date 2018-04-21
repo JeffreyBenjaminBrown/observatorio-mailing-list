@@ -1,1 +1,1 @@
-This code relies on a secret Makefile in the downloads/ folder which downloads the google spreadsheets containing subscriber information.
+This code relies on a Makefile in the secret private/ folder which downloads the google spreadsheets containing subscriber information.
