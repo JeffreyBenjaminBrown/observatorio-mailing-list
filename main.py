@@ -7,16 +7,22 @@ canceled = pd.read_csv( "private/canceled.csv" ) # collected online, ongoing
 first_subscribed = pd.read_csv(
   "private/first.csv" # collected once, at the observatorio launch
   , usecols = [ 'Marca temporal', 'Nombres', 'Apellidos'
+                , 'Le gustaría recibir información adicional del observatorio'
                 , 'Correo electrónico' ] )
 
 # Homogenize
 first_subscribed = first_subscribed.rename(
   columns={'Marca temporal':'Timestamp', 'Apellidos':'Primer Apellido'
+           , 'Le gustaría recibir información adicional del observatorio' : 'Quiere'
            , 'Correo electrónico': 'Correo'} )
 subscribed = subscribed.rename(
   columns={'Correo Electrónico': 'Correo'})
 canceled = canceled.rename(
   columns={'Correo electrónico': 'Correo'})
+
+first_subscribed = first_subscribed[ first_subscribed['Quiere'] == 'Sí' ]
+first_subscribed = first_subscribed.drop("Quiere",axis='columns')
+
 subscribed = subscribed.append( first_subscribed )
 # del(first_subscribed)
 
@@ -41,4 +47,3 @@ united.to_csv( 'output/active_subscriptions.csv' )
 addresses = united['Correo'].tolist()
 with open("output/addresses.txt", "w") as text_file:
     print(', '.join(addresses), file=text_file)
-
