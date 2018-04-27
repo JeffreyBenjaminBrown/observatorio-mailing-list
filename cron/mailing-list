@@ -1,0 +1,6 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+0 * * * *   root    sudo docker run --name list-cron -it -v /home/jeff/mailing-list:/mnt -p 8192:8182 -d -h 127.0.0.1 jeffreybbrown/mailing-list-ofiscal:new
+
+10 * * * *   root    sudo docker rm list-cron
