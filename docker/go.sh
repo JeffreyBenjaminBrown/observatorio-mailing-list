@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /mnt/downloads
+cd /mnt/private
 make downlaods
 cd /mnt
 python3 main.py

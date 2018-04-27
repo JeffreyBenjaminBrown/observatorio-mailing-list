@@ -21,8 +21,11 @@ RUN apt-get install -y curl grep sed dpkg && \
     rm tini.deb && \
     apt-get clean
 
-# here it starts deviating from continuum/anaconda3
+
+# here the Dockerfile starts deviating from continuum/anaconda3
 RUN apt install -y make
 
+COPY go.sh /root/
+
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
-CMD [ "/bin/bash" ]
+CMD [ "/root/go.sh" ]
