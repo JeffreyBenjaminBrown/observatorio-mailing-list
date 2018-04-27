@@ -1,7 +1,0 @@
-sudo docker build -f Dockerfile -t	        \
-  jeffreybbrown/mailing-list-ofiscal:new .	\
-  | tee logs/"build-log.`date`.txt"
-
-sudo docker run --name list -it -v /home/jeff/mailing-list:/mnt \
-  -p 8192:8182 -d -h 127.0.0.1                                  \
-  jeffreybbrown/mailing-list-ofiscal:new
