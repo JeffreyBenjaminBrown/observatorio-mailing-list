@@ -28,4 +28,4 @@ RUN apt install -y make
 COPY go.sh /root/
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
-CMD [ "/root/go.sh" ]
+CMD bash /root/go.sh
