@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+
 # Download
 subscribed = pd.read_csv( "private/subscribed.csv" ) # collected online, ongoing
 canceled = pd.read_csv( "private/canceled.csv" ) # collected online, ongoing
@@ -9,6 +10,7 @@ first_subscribed = pd.read_csv(
   , usecols = [ 'Marca temporal', 'Nombres', 'Apellidos'
                 , 'Le gustaría recibir información adicional del observatorio'
                 , 'Correo electrónico' ] )
+
 
 # Homogenize
 first_subscribed = first_subscribed.rename(
@@ -26,11 +28,13 @@ first_subscribed = first_subscribed.drop("Quiere",axis='columns')
 subscribed = subscribed.append( first_subscribed )
 # del(first_subscribed)
 
+
 # Unify
 subscribed['Cancellation']=False
 canceled['Cancellation']=True
 united = subscribed.append( canceled )
 # del(subscribed,canceled)
+
 
 # Limit to active subscriptions
 united = united.sort_values(by=['Correo','Timestamp'])
@@ -40,6 +44,7 @@ united = united.reset_index()
   # Gruoping turns the email address from a column to an index. Reverse that.
 united = united[ ~united['Cancellation'] ].drop(['Cancellation'],axis=1)
   # If the last action from that address was to cancel, remove it.
+
 
 # Output
 if not os.path.exists('output'): os.makedirs('output')
