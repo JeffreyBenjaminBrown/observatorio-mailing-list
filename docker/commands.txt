@@ -6,6 +6,11 @@ sudo docker run --name list -it -v /home/jeff/mailing-list:/mnt \
   -p 8192:8182 -d -h 127.0.0.1                                  \
   jeffreybbrown/mailing-list-ofiscal:new
 
+sudo docker run --entrypoint=/bin/bash                          \
+                --name list -it -v /home/jeff/mailing-list:/mnt \
+  -p 8192:8182 -d -h 127.0.0.1                                  \
+  jeffreybbrown/mailing-list-ofiscal:new
+
 # to override the default CMD and start a bash shell instead
 sudo docker run --name list -it -v /home/jeff/mailing-list:/mnt \
   --entrypoint=/bin/bash                                        \
