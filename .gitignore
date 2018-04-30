@@ -3,3 +3,4 @@ output/
 docker/logs/
 send-email/user.txt
 send-email/password.txt
+src/__pycache__
