@@ -10,8 +10,9 @@ import email.encoders as Encoders
 
 
 def main():
-  user =     open("private/credentials/user.txt")    .read().strip()
-  password = open("private/credentials/password.txt").read().strip()
+  user =       open("private/credentials/user.txt")    .read().strip()
+  password =   open("private/credentials/password.txt").read().strip()
+  recipients = open("private/email_recipients.txt")    .read().strip()
 
   server = smtplib.SMTP('smtp.gmail.com', 587)
   server.ehlo()
@@ -20,7 +21,7 @@ def main():
 
   msg = MIMEMultipart()
   msg['Subject'] = 'Latest subscriptions to email list. Automated email.'
-  msg['To'] = "ofiscalpuj" + "@gmail.com"
+  msg['To'] = recipients
   msg['From'] = user       + "@gmail.com"
 
   for file in [ "private/output/addresses.txt"
