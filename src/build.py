@@ -52,4 +52,4 @@ def main():
   united.to_csv( 'private/output/active_subscriptions.csv' )
   addresses = united['Correo'].tolist()
   with open("private/output/addresses.txt", "w") as text_file:
-      print(', '.join(addresses), file=text_file)
+      print('\n'.join(addresses), file=text_file)
