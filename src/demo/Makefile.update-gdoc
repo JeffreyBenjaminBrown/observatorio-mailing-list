@@ -1,0 +1,17 @@
+# How the old working version updated the google docs.
+# I'm not sure whether the /d/e in the URL below is universal
+# or would vary across spreadsheets.
+# I'm also no sure whether the pid matters.
+# For two of the 3 URLs it was 0.
+
+SHELL := bash
+.PHONY: downloads
+
+downloads: first.csv subscribed.csv canceled.csv
+
+subscribed.csv:
+	curl "https://docs.google.com/spreadsheets/d/e<secret something something>/pub?gid=<maybe also secret?>&single=true&output=csv" > subscribed.csv
+canceled.csv:
+        <similar>
+first.csv:
+        <similar>
